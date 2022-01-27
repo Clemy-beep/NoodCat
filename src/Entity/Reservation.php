@@ -1,13 +1,47 @@
-<?php 
+<?php
 
-class Reservation {
+namespace App\Entity;
+
+use App\Entity\Cat;
+use App\Entity\Client;
+use App\Entity\BarTable;
+use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="reservation")
+ */
+class Reservation
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
     private int $id;
+    /**
+     * @ORM\OneToOne(targetEntity="Client")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
+     */
     private Client $client;
+    /**
+     * @ORM\OneToOne(targetEntity="Cat")
+     * @ORM\JoinColumn(name="cat_id", referencedColumnName="cat_id")
+     */
     private Cat $cat;
-    private Table $table;
+    /**
+     * @ORM\OneToOne(targetEntity="BarTable")
+     * @ORM\JoinColumn(name="bar_table_id", referencedColumnName="bar_table_id")
+     */
+    private BarTable $table;
+    /**
+     * @ORM\Column(type="datetime", name="reservation_datetime")
+     */
     private DateTime $dateTime;
 
-    public function __construct($c, $ca, $t, $d){
+    public function __construct($c, $ca, $t, $d)
+    {
         $this->client = $c;
         $this->cat = $ca;
         $this->table = $t;
@@ -90,7 +124,7 @@ class Reservation {
      *
      * @return Table
      */
-    public function getTable(): Table
+    public function getTable(): BarTable
     {
         return $this->table;
     }
@@ -102,7 +136,7 @@ class Reservation {
      *
      * @return self
      */
-    public function setTable(Table $table): self
+    public function setTable(BarTable $table): self
     {
         $this->table = $table;
 
@@ -133,5 +167,3 @@ class Reservation {
         return $this;
     }
 }
-
-?>

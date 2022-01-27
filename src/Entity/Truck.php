@@ -1,22 +1,31 @@
-<?php 
+<?php
+
 namespace App\Entity;
 
-Use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM;
 
-
-class Truck {
 /**
- * @ORM\Id
- * @ORM\GeneratedValue
- * @ORM\Column(type="integer")
+ * @ORM\Entity
+ * @ORM\Table(name="truck")
  */
+class Truck
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
     private int $id_truck;
-/**
+    /**
  
- * @ORM\Column(type="String")
- */
-    private String $CompanyName;
+     * @ORM\Column(type="string")
+     */
+    private String $companyName;
 
+    public function __construct(string $c)
+    {
+        $this->companyName = $c;
+    }
     /**
      * Get the value of id_truck
      *
@@ -48,7 +57,7 @@ class Truck {
      */
     public function getCompanyName(): String
     {
-        return $this->CompanyName;
+        return $this->companyName;
     }
 
     /**
@@ -58,9 +67,9 @@ class Truck {
      *
      * @return self
      */
-    public function setCompanyName(String $CompanyName): self
+    public function setCompanyName(String $companyName): self
     {
-        $this->CompanyName = $CompanyName;
+        $this->companyName = $companyName;
 
         return $this;
     }

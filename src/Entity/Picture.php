@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Cat;
 use Doctrine\ORM\Mapping as ORM;
 
 
 /** @ORM\Entity 
-* 
-*/
+ * 
+ */
 class Picture
 {
 
@@ -16,26 +17,29 @@ class Picture
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    private int $picture_id;
 
     /**
-     * 
+     * @ORM\OneToOne(targetEntity="Cat", mappedBy="picture")
      */
-    private int $cat_id;
+    private Cat $cat;
 
     /**
-     * @ORM\Column(type="INTEGER")
+     * @ORM\Column(type="integer")
      */
     private int $num_place;
 
 
-
+    public function __construct(Cat $cat)
+    {
+        $this->cat = $cat;
+    }
     /**
      * Get the value of id
      */
     public function getId()
     {
-        return $this->id;
+        return $this->picture_id;
     }
 
 
@@ -45,9 +49,9 @@ class Picture
      *
      * @return  self
      */
-    public function setId($id)
+    public function setId($picture_id)
     {
-        $this->id = $id;
+        $this->picture_id = $picture_id;
 
         return $this;
     }
@@ -57,9 +61,9 @@ class Picture
     /**
      * Get the value of cat_id
      */
-    public function getCat_id()
+    public function getCat()
     {
-        return $this->cat_id;
+        return $this->cat;
     }
 
 
@@ -69,9 +73,9 @@ class Picture
      *
      * @return  self
      */
-    public function setCat_id($cat_id)
+    public function setCat(Cat $cat)
     {
-        $this->cat_id = $cat_id;
+        $this->cat = $cat;
 
         return $this;
     }
@@ -98,14 +102,5 @@ class Picture
         $this->num_place = $num_place;
 
         return $this;
-    }
-
-
-
-
-    public function __construct(int $picture_id, int $cat_id)
-    {
-        $this->picture_id = $picture_id;
-        $this->cat_id = $cat_id;
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity 
-* 
-*/
+ * 
+ */
 class Cat
 {
 
@@ -17,21 +18,32 @@ class Cat
      */
     private int $cat_id;
 
-    
+
     /**
-     * @ORM\Id
-     * @ORM\Column(name="puce", type="integer", length="15")
+     * @ORM\Column(name="puce", type="integer")
      */
     private int $puce;
 
-    
+
     /**
-     * @ORM\Id
      * @ORM\Column(name="name", type="string")
      */
     private string $name;
 
 
+    /**
+     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\JoinColumn(name="picture_id", referencedColumnName="picture_id")
+     */
+
+    private Collection $pictures;
+
+
+    public function __construct(string $name, int $puce)
+    {
+        $this->name = $name;
+        $this->puce = $puce;
+    }
     /**
      * Get the value of cat_id
      */
@@ -39,15 +51,12 @@ class Cat
     {
         return $this->cat_id;
     }
-
-
-
     /**
      * Set the value of cat_id
      *
      * @return  self
      */
-    public function setCat_id($cat_id)
+    public function setCat_id(string $cat_id)
     {
         $this->cat_id = $cat_id;
 
@@ -71,7 +80,7 @@ class Cat
      *
      * @return  self
      */
-    public function setPuce($puce)
+    public function setPuce(int $puce)
     {
         $this->puce = $puce;
 
@@ -95,19 +104,34 @@ class Cat
      *
      * @return  self
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
 
         return $this;
     }
 
-
-
-    public function __construct(int $cat_id, string $name, int $puce)
+      /**
+     * Get the value of pictures
+     */
+    public function getPictures()
     {
-        $this->cat_id = $cat_id;
-        $this->name = $name;
-        $this->puce = $puce;
+        return $this->pictures;
+    }
+
+
+
+    /**
+     * Set the value of pictures
+     *
+     * @return  self
+     */
+    public function setPictures(array $pictures)
+    {
+        $this->pictures = $pictures;
+
+        return $this;
     }
 }
+
+

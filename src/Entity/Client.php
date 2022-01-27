@@ -3,11 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Person;
 
-class Client extends Personne{
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="client")
+ */
+class Client extends Person{
     
-    public function __construct(int $id, string $nom, string $prenom, string $email, string $pwd)
+    public function __construct(string $nom, string $prenom, string $email, string $pwd)
     {
-        parent::__construct($id, $nom,$prenom,$email,$pwd);
+        parent::__construct($nom,$prenom,$email,$pwd);
     }
 }

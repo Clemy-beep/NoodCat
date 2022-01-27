@@ -5,49 +5,51 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity 
-* 
-*/
-class Table
+ * @ORM\Table(name="bar_table")
+ */
+class BarTable
 {
 
-    /**
+     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private int $table_id;
+    private int $bar_table_id;
 
     /**
-     * @ORM\
-     * @ORM\Column(name="pad_number", type="integer", length="15")
+     * @ORM\Column(name="pad_number", type="integer")
      */
     private int $pad_number;
 
     /**
-     * @ORM\
-     * @ORM\Column(name="nombre places", type="integer", length="1")
+     * @ORM\Column(name="nombre places", type="integer")
      */
     private int $num_place;
 
-
-    /**
-     * Get the value of table_id
-     */
-    public function getTable_id()
+    public function __construct(int $num_place, int $pad_number)
     {
-        return $this->table_id;
+        $this->num_place = $num_place;
+        $this->pad_number = $pad_number;
+    }
+    /**
+     * Get the value of bar_table_id
+     */
+    public function getBarTableId()
+    {
+        return $this->bar_table_id;
     }
 
 
 
     /**
-     * Set the value of table_id
+     * Set the value of bar_table_id
      *
      * @return  self
      */
-    public function setTable_id($table_id)
+    public function setBarTableId($bar_table_id)
     {
-        $this->table_id = $table_id;
+        $this->bar_table_id = $bar_table_id;
 
         return $this;
     }
@@ -99,14 +101,4 @@ class Table
 
         return $this;
     }
-
-
-
-    public function __construct(int $table_id, int $num_place, int $pad_number)
-    {
-        $this->table_id = $table_id;
-        $this->num_place = $num_place;
-        $this->pad_number = $pad_number;
-    }
-
 }
