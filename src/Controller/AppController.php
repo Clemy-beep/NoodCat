@@ -11,5 +11,7 @@ class AppController
         include './src/View/Homepage.php';
     }
 
-   
+    public static function notFound(){
+        include './routes/404.html';
+    }
 }
