@@ -53,8 +53,7 @@ class Router
             }
         }
         // echo "<pre>" . print_r($this->routes, true) . "</pre>";
-        http_response_code(404);
-        echo "Page not found.";
+         header('Location: http://127.0.0.6/not-found');
     }
 
     public function url($name, $params = [])
