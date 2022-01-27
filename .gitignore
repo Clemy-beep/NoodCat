@@ -3,6 +3,8 @@
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
+/.env
+.env
 
 #Workspace
 *.code-workspace
