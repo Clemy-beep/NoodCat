@@ -9,5 +9,6 @@ $router = new Router($_GET['url']);
 $router->get("/", function(){
     AppController::index();
 });
+$router->get("/not-found", AppController::notFound());
 
 $router->run();
