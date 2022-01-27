@@ -31,8 +31,8 @@ class Cat
     private string $name;
 
 
-    /**
-     * @ORM\OneToOne(targetEntity="Picture")
+     /**
+     * @ORM\OneToMany(targetEntity="Picture")
      * @ORM\JoinColumn(name="picture_id", referencedColumnName="picture_id")
      */
 
