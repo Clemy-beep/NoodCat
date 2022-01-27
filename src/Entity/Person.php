@@ -45,7 +45,7 @@ abstract class Person
         $this->lastname = $l;
         $this->firstname = $f;
         $this->email = $email;
-        $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
+        $this->pwd = $pwd;
     }
 
     /**
