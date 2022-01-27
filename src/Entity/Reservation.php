@@ -32,7 +32,7 @@ class Reservation
     private Cat $cat;
     /**
      * @ORM\OneToOne(targetEntity="BarTable")
-     * @ORM\JoinColumn(name="bar_table_id", referencedColumnName="bar_table_id")
+     * @ORM\JoinColumn(name="bar_t_id", referencedColumnName="bar_table_id")
      */
     private BarTable $table;
     /**
