@@ -139,6 +139,26 @@ class Cat
 
         return $this;
     }
+
+    /**
+     * Get the value of bar
+     */ 
+    public function getBar()
+    {
+        return $this->bar;
+    }
+
+    /**
+     * Set the value of bar
+     *
+     * @return  self
+     */ 
+    public function setBar($bar)
+    {
+        $this->bar = $bar;
+
+        return $this;
+    }
 }
 
 
