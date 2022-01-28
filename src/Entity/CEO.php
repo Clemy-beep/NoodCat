@@ -7,7 +7,6 @@ use App\Entity\Person;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="ceo")
  */
 class CEO extends Person{
      /**
