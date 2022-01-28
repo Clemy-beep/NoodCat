@@ -11,7 +11,7 @@ use App\Entity\Person;
 class CEO extends Person
 {
     /**
-     * @ORM\OneToMany(targetEntity="Bar", mappedBy="CEO")
+     * @ORM\OneToMany(targetEntity="Bar", mappedBy="bar")
      * @ORM\JoinColumn(name="bar_id", referencedColumnName="bar_id", nullable=true)
      */
     private $bars;
