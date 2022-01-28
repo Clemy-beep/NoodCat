@@ -20,7 +20,12 @@ class Picture
     private int $picture_id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Cat", mappedBy="picture")
+     * @ORM\Column(type="string")
+     */
+    private string $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Cat", mappedBy="picture")
      */
     private Cat $cat;
 
@@ -30,10 +35,12 @@ class Picture
     private int $num_place;
 
 
-    public function __construct(Cat $cat)
+    public function __construct(string $name, Cat $cat)
     {
+        $this->name = $name;
         $this->cat = $cat;
     }
+
     /**
      * Get the value of id
      */
@@ -100,6 +107,26 @@ class Picture
     public function setNum_place($num_place)
     {
         $this->num_place = $num_place;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the value of name
+     *
+     * @return  self
+     */ 
+    public function setName($name)
+    {
+        $this->name = $name;
 
         return $this;
     }
