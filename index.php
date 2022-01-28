@@ -53,4 +53,24 @@ $router->post('/login', function () {
     AppController::login();
 });
 
+
+$router->get("cats/show/:id", "\src\Controller\CatsController.php@show"); //liste des chats pour l'id d'un bar
+$router->get("bars/show", "\src\Controller\BarsController.php@show"); //afficher liste de tous les bars
+
+
+
+
+
+
 $router->run();
+
+
+
+
+
+
+
+
+
+
+

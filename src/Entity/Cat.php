@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use App\Entity\Bar;
 
 use App\Entity\Bar;
 
@@ -43,7 +44,6 @@ class Cat
      * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
      */
     private Bar $bar;
-
 
     public function __construct(string $name, int $puce, bar $bar)
     {
@@ -143,6 +143,7 @@ class Cat
 
     /**
      * Get the value of bar
+     */ 
      *
      * @return Bar
      */
@@ -161,7 +162,6 @@ class Cat
     public function setBar(Bar $bar): self
     {
         $this->bar = $bar;
-
         return $this;
     }
 }
