@@ -35,22 +35,21 @@ $router->get("/sign-up", function () {
 $router->post('/sign-up', function () {
     PersonController::signUp();
 });
-// $router->get("/not-found", function () {
-//     AppController::notFound();
-// });
+$router->get("/not-found", function () {
+    AppController::notFound();
+});
 
-
-$router->get('/home', function(){
+$router->get('/home', function () {
     AppController::home();
 });
 
 
 
 
-$router->get('/login', function(){
+$router->get('/login', function () {
     AppController::login();
 });
-$router->post('/login', function(){
+$router->post('/login', function () {
     AppController::login();
 });
 
