@@ -25,7 +25,8 @@ class Picture
     private string $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cat", mappedBy="picture")
+     * @ORM\ManyToOne(targetEntity="Cat", inversedBy="cat")
+     * @ORM\JoinColumn(name="cat_id", referencedColumnName="cat_id")
      */
     private Cat $cat;
 

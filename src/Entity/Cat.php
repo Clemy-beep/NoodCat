@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+
 use App\Entity\Bar;
 
 use Doctrine\Common\Collections\Collection;
@@ -31,14 +32,15 @@ class Cat
     private string $name;
 
 
-     /**
+    /**
      * @ORM\OneToMany(targetEntity="Picture", mappedBy="Cat")
      * @ORM\JoinColumn(name="picture_id", referencedColumnName="picture_id")
      */
     private Collection $pictures;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Bar", mappedBy="Cat")
+     * @ORM\ManyToOne(targetEntity="Bar", inversedBy="Cat")
+     * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
      */
     private Bar $bar;
 
@@ -117,7 +119,7 @@ class Cat
         return $this;
     }
 
-      /**
+    /**
      * Get the value of pictures
      */
     public function getPictures()
@@ -138,6 +140,28 @@ class Cat
 
         return $this;
     }
+
+    /**
+     * Get the value of bar
+     *
+     * @return Bar
+     */
+    public function getBar(): Bar
+    {
+        return $this->bar;
+    }
+
+    /**
+     * Set the value of bar
+     *
+     * @param Bar $bar
+     *
+     * @return self
+     */
+    public function setBar(Bar $bar): self
+    {
+        $this->bar = $bar;
+
+        return $this;
+    }
 }
-
-

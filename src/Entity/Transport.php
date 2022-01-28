@@ -23,12 +23,12 @@ class Transport
      */
     private string $transport_type;
     /**
-     * @ORM\OneToOne(targetEntity="Cashier", mappedBy="transport")
+     * @ORM\OneToOne(targetEntity="Cashier")
      * @ORM\JoinColumn(name="cashier_id", referencedColumnName="id", nullable=true)
      */
     private Cashier $cashier;
     /**
-     * @ORM\OneToOne(targetEntity="Truck", mappedBy="transport")
+     * @ORM\OneToOne(targetEntity="Truck")
      * @ORM\JoinColumn(name="truck_id", referencedColumnName="id_truck", nullable=true)
      */
     private Truck $truck;
@@ -40,17 +40,13 @@ class Transport
      * @ORM\Column(type="integer")
      */
     private int $Cost;
-
-
-     /**
+    /**
      * @ORM\ManyToOne(targetEntity="Bar")
-     * @ORM\JoinColumn(name="Bar_start", referencedColumnName="id", nullable=true)
      */
     private Bar $bar_start;
 
-     /**
+    /**
      * @ORM\ManyToOne(targetEntity="Bar")
-     * @ORM\JoinColumn(name="Bar_end", referencedColumnName="id", nullable=true)
      */
     private Bar $bar_end;
 
@@ -92,7 +88,7 @@ class Transport
         return $this;
     }
 
-     /**
+    /**
      * Get the value of cashier
      *
      * @return string
@@ -139,7 +135,7 @@ class Transport
 
         return $this;
     }
-     /**
+    /**
      * Get the value of cashier
      *
      * @return Cashier
@@ -212,7 +208,7 @@ class Transport
 
     /**
      * Get the value of bar_start
-     */ 
+     */
     public function getBar_start()
     {
         return $this->bar_start;
@@ -222,7 +218,7 @@ class Transport
      * Set the value of bar_start
      *
      * @return  self
-     */ 
+     */
     public function setBar_start($bar_start)
     {
         $this->bar_start = $bar_start;
@@ -232,7 +228,7 @@ class Transport
 
     /**
      * Get the value of bar_end
-     */ 
+     */
     public function getBar_end()
     {
         return $this->bar_end;
@@ -242,7 +238,7 @@ class Transport
      * Set the value of bar_end
      *
      * @return  self
-     */ 
+     */
     public function setBar_end($bar_end)
     {
         $this->bar_end = $bar_end;
