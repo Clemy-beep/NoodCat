@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Controller;
+
+
+
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\MAPPING\ClassMetadata;
-use App\Helpers\EntityManagerHelpers as Em;
+use App\Helpers\EntityManagerHelpers;
 use Router\Router;
+
 
 class AppController
 {
@@ -20,8 +24,14 @@ class AppController
         include './src/View/Homepage.php';
     }
 
-    public static function notFound(){
+    public static function notFound()
+    {
         include './routes/404.html';
+    }
+
+    public static function signUpForm()
+    {
+        include '/home/stagiaire16/Documents/NoodCat/src/View/Signup.php';
     }
 
 
@@ -44,7 +54,7 @@ class AppController
                     die(); 
                 }
 
-                $entityManager = Em::getEntityManager();        
+                $entityManager = EntityManagerHelpers::getEntityManager();        
                 $repository = new EntityRepository($entityManager, new ClassMetadata("App\Entity\Person"));
                 
                 $oUser = $repository->findBy(['email'=>$_POST['email']]);
@@ -68,6 +78,7 @@ class AppController
             }
 
         }
+
 
     }
 }

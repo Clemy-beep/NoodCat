@@ -29,11 +29,6 @@ class Picture
      */
     private Cat $cat;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private int $num_place;
-
 
     public function __construct(string $name, Cat $cat)
     {
@@ -88,29 +83,6 @@ class Picture
     }
 
 
-
-    /**
-     * Get the value of num_place
-     */
-    public function getNum_place()
-    {
-        return $this->num_place;
-    }
-
-
-
-    /**
-     * Set the value of num_place
-     *
-     * @return  self
-     */
-    public function setNum_place($num_place)
-    {
-        $this->num_place = $num_place;
-
-        return $this;
-    }
-
     /**
      * Get the value of name
      */ 
@@ -130,4 +102,5 @@ class Picture
 
         return $this;
     }
+
 }
