@@ -9,7 +9,6 @@ use App\Entity\Cat;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="bar")
  */
 class Bar
 {
@@ -33,13 +32,19 @@ class Bar
      * @ORM\JoinColumn(name="table_id", referencedColumnName="table_id")
      */
     private $tables;
+     /**
+     * @ORM\ManyToOne(targetEntity="CEO", inversedBy="Bar")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+     */
+    private CEO $owner;
 
 
-    public function __construct($n, $ca, $t)
+    public function __construct($n, $ca, $t, $o)
     {
         $this->name = $n;
         $this->cats = $ca;
         $this->tables = $t;
+        $this->owner = $o;
     }
 
     /**
@@ -134,6 +139,30 @@ class Bar
     public function setTables(Collection $tables): self
     {
         $this->tables = $tables;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of owner
+     *
+     * @return CEO
+     */
+    public function getOwner(): CEO
+    {
+        return $this->owner;
+    }
+
+    /**
+     * Set the value of owner
+     *
+     * @param CEO $owner
+     *
+     * @return self
+     */
+    public function setOwner(CEO $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }

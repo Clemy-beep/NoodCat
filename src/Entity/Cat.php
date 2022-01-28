@@ -3,6 +3,8 @@
 namespace App\Entity;
 use App\Entity\Bar;
 
+use App\Entity\Bar;
+
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,7 +21,6 @@ class Cat
      */
     private int $cat_id;
 
-
     /**
      * @ORM\Column(name="puce", type="integer")
      */
@@ -32,17 +33,17 @@ class Cat
     private string $name;
 
 
-     /**
-     * @ORM\OneToMany(targetEntity="Picture")
+    /**
+     * @ORM\OneToMany(targetEntity="Picture", mappedBy="Cat")
      * @ORM\JoinColumn(name="picture_id", referencedColumnName="picture_id")
      */
     private Collection $pictures;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Bar", mappedBy="Cat")
+     * @ORM\ManyToOne(targetEntity="Bar", inversedBy="Cat")
+     * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
      */
     private Bar $bar;
-
 
     public function __construct(string $name, int $puce, bar $bar)
     {
@@ -118,7 +119,7 @@ class Cat
         return $this;
     }
 
-      /**
+    /**
      * Get the value of pictures
      */
     public function getPictures()
@@ -143,7 +144,10 @@ class Cat
     /**
      * Get the value of bar
      */ 
-    public function getBar()
+     *
+     * @return Bar
+     */
+    public function getBar(): Bar
     {
         return $this->bar;
     }
@@ -151,13 +155,13 @@ class Cat
     /**
      * Set the value of bar
      *
-     * @return  self
-     */ 
-    public function setBar($bar)
+     * @param Bar $bar
+     *
+     * @return self
+     */
+    public function setBar(Bar $bar): self
     {
         $this->bar = $bar;
-
         return $this;
     }
 }
-

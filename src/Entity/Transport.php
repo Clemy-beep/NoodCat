@@ -9,7 +9,6 @@ use App\Entity\Cashier;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="transport")
  */
 class Transport
 {
@@ -24,12 +23,12 @@ class Transport
      */
     private string $transport_type;
     /**
-     * @ORM\OneToOne(targetEntity="Cashier", mappedBy="transport")
+     * @ORM\OneToOne(targetEntity="Cashier")
      * @ORM\JoinColumn(name="cashier_id", referencedColumnName="id", nullable=true)
      */
     private Cashier $cashier;
     /**
-     * @ORM\OneToOne(targetEntity="Truck", mappedBy="transport")
+     * @ORM\OneToOne(targetEntity="Truck")
      * @ORM\JoinColumn(name="truck_id", referencedColumnName="id_truck", nullable=true)
      */
     private Truck $truck;
@@ -41,15 +40,29 @@ class Transport
      * @ORM\Column(type="integer")
      */
     private int $Cost;
+    /**
+     * @ORM\ManyToOne(targetEntity="Bar")
+     */
+    private Bar $bar_start;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Bar")
+     */
+    private Bar $bar_end;
 
-    public function __construct(int $transport_type, Cashier $cashier, Truck $truck, DateTime $DateTime, int $Cost)
+    /**
+     * 
+     * 
+     */
+    public function __construct(int $transport_type, DateTime $DateTime, int $Cost, ?bar $bar_start, ?bar $bar_end, ?Cashier $cashier, ?Truck $truck)
     {
         $this->transport_type = $transport_type;
-        $this->cashier = $cashier;
-        $this->truck = $truck;
         $this->DateTime = $DateTime;
         $this->Cost = $Cost;
+        $this->cashier = $cashier;
+        $this->truck = $truck;
+        $this->bar_start = $bar_start;
+        $this->bar_end = $bar_end;
     }
     /**
      * Get the value of id_transport
@@ -75,7 +88,7 @@ class Transport
         return $this;
     }
 
-     /**
+    /**
      * Get the value of cashier
      *
      * @return string
@@ -122,7 +135,7 @@ class Transport
 
         return $this;
     }
-     /**
+    /**
      * Get the value of cashier
      *
      * @return Cashier
@@ -189,6 +202,46 @@ class Transport
     public function setCost(int $Cost): self
     {
         $this->Cost = $Cost;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of bar_start
+     */
+    public function getBar_start()
+    {
+        return $this->bar_start;
+    }
+
+    /**
+     * Set the value of bar_start
+     *
+     * @return  self
+     */
+    public function setBar_start($bar_start)
+    {
+        $this->bar_start = $bar_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of bar_end
+     */
+    public function getBar_end()
+    {
+        return $this->bar_end;
+    }
+
+    /**
+     * Set the value of bar_end
+     *
+     * @return  self
+     */
+    public function setBar_end($bar_end)
+    {
+        $this->bar_end = $bar_end;
 
         return $this;
     }
