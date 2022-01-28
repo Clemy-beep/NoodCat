@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use App\Entity\Bar;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -34,15 +35,21 @@ class Cat
      * @ORM\OneToMany(targetEntity="Picture", mappedBy="Cat")
      * @ORM\JoinColumn(name="picture_id", referencedColumnName="picture_id")
      */
-
     private Collection $pictures;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Bar", mappedBy="Cat")
+     */
+    private Bar $bar;
 
-    public function __construct(string $name, int $puce)
+
+    public function __construct(string $name, int $puce, bar $bar)
     {
         $this->name = $name;
         $this->puce = $puce;
+        $this->bar = $bar;
     }
+
     /**
      * Get the value of cat_id
      */

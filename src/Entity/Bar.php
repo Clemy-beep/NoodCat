@@ -9,7 +9,6 @@ use App\Entity\Cat;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="bar")
  */
 class Bar
 {

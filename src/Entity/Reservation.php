@@ -10,7 +10,6 @@ use DateTime;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="reservation")
  */
 class Reservation
 {
