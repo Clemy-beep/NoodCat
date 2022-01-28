@@ -67,7 +67,7 @@ class AppController
                 $_SESSION['type'] = strtolower(str_replace("App\Entity\\", "", get_class($oUser[0])));
 
                 $_SESSION['email'] = $oUser[0]->getEmail(); // ou $_POST['email'] c'est pareil
-                $_SESSION['prenom'] = $oUser[0]->getFirstname();
+                $_SESSION['firstname'] = $oUser[0]->getFirstname();
                 $_SESSION['id'] = $oUser[0]->getId();
 
                 echo "successfully connected";

@@ -41,12 +41,17 @@ class Cat
      * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
      */
     private Bar $bar;
+     /**
+     * @ORM\Column(name="status", type="string")
+     */
+    private string $status;
 
-    public function __construct(string $name, int $puce, bar $bar)
+    public function __construct(string $name, int $puce, bar $bar, string $s)
     {
         $this->name = $name;
         $this->puce = $puce;
         $this->bar = $bar;
+        $this->status = $s;
     }
 
     /**
@@ -158,6 +163,30 @@ class Cat
     public function setBar(Bar $bar): self
     {
         $this->bar = $bar;
+        return $this;
+    }
+
+    /**
+     * Get the value of status
+     *
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @param string $status
+     *
+     * @return self
+     */
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
         return $this;
     }
 }

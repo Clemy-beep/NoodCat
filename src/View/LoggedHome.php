@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +10,12 @@
 </head>
 
 <body>
-    <h1>bouh</h1>
-    <h1><?php var_dump($_SESSION) ?></h1>
+    <?php
+    if ($_SESSION['type'] === "ceo") include './src/View/Templates/CeoHeader.html';
+    if ($_SESSION['type'] === "client") include './src/View/Templates/ClientHeader';
+    if ($_SESSION['type'] === "cashier") include './src/View/Templates/CashierHeader';
+    ?>
+    <h1>Welcome <?= $_SESSION['firstname'] ?></h1>
 </body>
 
 </html>

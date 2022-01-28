@@ -21,7 +21,7 @@ class CashierController
         CashierController::verifyCashierMail($_POST['email']);
         $hashpwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        $client = new Cashier($_POST['firstname'], $_POST['lastname'], $_POST['email'], $hashpwd, $_POST['registration']);
+        $client = new Cashier($_POST['lastname'], $_POST['firstname'], $_POST['email'], $hashpwd, $_POST['registration']);
         $em->persist($client);
         try {
             $em->flush();
