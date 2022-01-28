@@ -24,8 +24,10 @@ public function List(string $Id) {
     foreach ($Cats as $Cat) {
     
         print($Cat->getName()) ;
-
+    /**
+     * Get the value of bar
+     */ 
+    public function getBar()
+    {
+        return $this->bar;
     }
-}
-
-}
