@@ -2,9 +2,6 @@
 
 namespace App\Entity;
 use App\Entity\Bar;
-
-use App\Entity\Bar;
-
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -143,7 +140,6 @@ class Cat
 
     /**
      * Get the value of bar
-     */ 
      *
      * @return Bar
      */
