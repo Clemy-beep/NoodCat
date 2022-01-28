@@ -9,17 +9,17 @@ use App\Entity\Person;
  * @ORM\Entity
  * @ORM\Table(name="ceo")
  */
-class CEO extends Person{
-     /**
+class CEO extends Person
+{
+    /**
      * @ORM\OneToMany(targetEntity="Bar", mappedBy="CEO")
-     * @ORM\JoinColumn(name="bar_id", referencedColumnName="bar_id")
+     * @ORM\JoinColumn(name="bar_id", referencedColumnName="bar_id", nullable=true)
      */
     private $bars;
 
-    public function __construct(string $nom, string $prenom, string $email, string $pwd, $b)
+    public function __construct(string $nom, string $prenom, string $email, string $pwd)
     {
-        parent::__construct($nom,$prenom,$email,$pwd);
-        $this->bars = $b;
+        parent::__construct($nom, $prenom, $email, $pwd);
     }
 
     /**

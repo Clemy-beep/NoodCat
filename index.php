@@ -4,11 +4,21 @@ require "bootstrap.php";
 
 use Router\Router;
 use App\Controller\AppController;
+use App\Controller\PersonController;
 
 $router = new Router($_GET['url']);
-$router->get("/", function(){
+$router->get("/", function () {
     AppController::index();
 });
-$router->get("/not-found", AppController::notFound());
+
+$router->get("/sign-up", function () {
+    AppController::signUpForm();
+});
+$router->post('/sign-up', function () {
+    PersonController::signUp();
+});
+// $router->get("/not-found", function () {
+//     AppController::notFound();
+// });
 
 $router->run();

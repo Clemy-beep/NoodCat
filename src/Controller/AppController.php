@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Router\Router;
 
 class AppController
 {
@@ -11,7 +10,12 @@ class AppController
         include './src/View/Homepage.php';
     }
 
-    public static function notFound(){
+    public static function notFound()
+    {
         include './routes/404.html';
+    }
+    public static function signUpForm()
+    {
+        include '/home/stagiaire16/Documents/NoodCat/src/View/Signup.php';
     }
 }

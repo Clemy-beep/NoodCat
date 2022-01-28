@@ -24,11 +24,6 @@ class Picture
      */
     private Cat $cat;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private int $num_place;
-
 
     public function __construct(Cat $cat)
     {
@@ -76,30 +71,6 @@ class Picture
     public function setCat(Cat $cat)
     {
         $this->cat = $cat;
-
-        return $this;
-    }
-
-
-
-    /**
-     * Get the value of num_place
-     */
-    public function getNum_place()
-    {
-        return $this->num_place;
-    }
-
-
-
-    /**
-     * Set the value of num_place
-     *
-     * @return  self
-     */
-    public function setNum_place($num_place)
-    {
-        $this->num_place = $num_place;
 
         return $this;
     }

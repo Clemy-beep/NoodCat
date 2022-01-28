@@ -18,7 +18,6 @@ class Cat
      */
     private int $cat_id;
 
-
     /**
      * @ORM\Column(name="puce", type="integer")
      */
@@ -32,7 +31,7 @@ class Cat
 
 
      /**
-     * @ORM\OneToMany(targetEntity="Picture")
+     * @ORM\OneToMany(targetEntity="Picture", mappedBy="Cat")
      * @ORM\JoinColumn(name="picture_id", referencedColumnName="picture_id")
      */
 
