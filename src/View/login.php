@@ -11,8 +11,9 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-
-<form action="./Controller/Appcontroller.php" method="POST">
+<?php include './src/View/Templates/AnonHeader.html' ?>
+<h1>Login</h1>
+<form method="POST">
 
     <div>
         <label for="email">email :</label>
@@ -21,7 +22,7 @@ session_start();
 
     <div>
         <label for="pwd">password :</label>
-       <input type="text" id="pwd" name="password">
+       <input type="text" id="pwd" name="pwd">
     </div>
 
     <div class="button">

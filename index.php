@@ -5,8 +5,24 @@ require "bootstrap.php";
 use Router\Router;
 use App\Controller\AppController;
 use App\Controller\PersonController;
-use App\Entity\Client ;
+use App\Entity\Client;
 
+
+if (!empty($_SESSION['type'])) {
+    switch ($_SESSION['type']) {
+
+        case 'client':
+            break;
+
+        case 'cashier':
+            break;
+
+        case 'CEO':
+            break;
+
+        default:
+    }
+}
 $router = new Router($_GET['url']);
 $router->get("/", function () {
     AppController::index();
@@ -14,7 +30,7 @@ $router->get("/", function () {
 
 
 $router->get("/sign-up", function () {
-    AppController::signUpForm();
+    PersonController::signUp();
 });
 $router->post('/sign-up', function () {
     PersonController::signUp();
@@ -24,26 +40,18 @@ $router->post('/sign-up', function () {
 // });
 
 
-if (!empty($_SESSION['type'])) {
-    $_SESSION['type'] = "";
-}
+$router->get('/home', function(){
+    AppController::home();
+});
 
-    switch ($_SESSION['type']) {
-    
-            case 'client':
-        break;
 
-            case 'cashier':
-        break;
 
-            case 'CEO':
-        break;
 
-    default:
-
-}
-
-$router->get('/login', 'App\Controller\AppController@login');
-$router->post('/login', 'App\Controller\AppController@login');
+$router->get('/login', function(){
+    AppController::login();
+});
+$router->post('/login', function(){
+    AppController::login();
+});
 
 $router->run();

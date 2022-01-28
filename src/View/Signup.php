@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <?php include './src/View/Templates/AnonHeader.html'; ?>
+
     <h1>Create a new account</h1>
     <select name="personType" id="personType">Choose a person type
         <option value="cashier">Employee</option>
@@ -37,8 +39,7 @@
             $('#userform').css('display', 'block');
             $('#cashierform').css('display', 'none');
             $('#ceoform').css('display', 'none');
-        }
-        else if ($('select').val() === 'ceo'){
+        } else if ($('select').val() === 'ceo') {
             $('#userform').css('display', 'none');
             $('#cashierform').css('display', 'none');
             $('#ceoform').css('display', 'block');

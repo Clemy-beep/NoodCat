@@ -12,6 +12,8 @@ class PersonController
 {
     public static function signUp()
     {
+        include './src/View/Signup.php';
+
         if (isset($_POST["personType"])) {
             if ($_POST["personType"] === "cashier") {
                 var_dump($_POST);
@@ -23,6 +25,6 @@ class PersonController
             if ($_POST['personType'] === "ceo") {
                 CeoController::createCeo();
             }
-        } else throw new Exception('Persone type is not defined.', 02);
+        } 
     }
 }
