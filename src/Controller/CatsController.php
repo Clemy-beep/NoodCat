@@ -9,25 +9,30 @@ use Doctrine\ORM\Mapping\ClassMetadata;
 use App\Entity\Cat;
 use App\Entity\Bar;
 
-
 class CatsController{
+
 
 
 public function List(string $Id) { 
 
-    $entityManager = Em::getEntityManager(); 
-    $repositoryCat = new EntityRepository($entityManager, new ClassMetadata("App\Entity\Cat"));
+        $entityManager = Em::getEntityManager(); 
+        $repositoryCats = new EntityRepository($entityManager, new ClassMetadata("App\Entity\Cat"));
+        $repositoryBars = new EntityRepository($entityManager, new ClassMetadata("App\Entity\Bar"));
 
-    $Cats = $repositoryCat->findBy(array('Bar_id'=>$Id));
+        $Cats = $repositoryCats->findBy(array('Bar_id'=>$Id));
+        $Bar = $repositoryBars->find((int)$Id);
+        
+        var_dump($Cats);
+        die('---END---');
 
+        print($Bar->getName());
+        
+        foreach ($Cats as $Cat) {
+        
+            print($Cat->getName()) ;
+            
+        }
 
-    foreach ($Cats as $Cat) {
-    
-        print($Cat->getName()) ;
-    /**
-     * Get the value of bar
-     */ 
-    public function getBar()
-    {
-        return $this->bar;
     }
+
+}
